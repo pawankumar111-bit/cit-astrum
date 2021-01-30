@@ -67,7 +67,7 @@ net.ipv4.ip_forward = 1' > /etc/sysctl.d/k8s.conf
 sysctl --system &>> $LOG
 Stat $? "Updating Network Configuration" 
 
-sed -i "s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+sed -i "s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g" /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
 systemctl daemon-reload &>/dev/null
 systemctl restart kubelet &>>$LOG 
 Stat $? "Retarting Kubelet Service"
